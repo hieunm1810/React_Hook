@@ -37,7 +37,7 @@ export default function UseEffectDemo() {
     }, 1000);
 
     return () => {
-      //function return trong useEffect sẽ đc kích hoạt trước khi component này mất khỏi giao diện giống componentwillunmount bên react class
+      //function return trong useEffect sẽ đc kích hoạt trước khi component này mất khỏi giao diện giống componentwillunmount bên react class, khác ở chỗ nó sẽ chạy nhiều lần, clean up previous effect from previous rendering before running effect the next time
       clearInterval(timeout);
     };
   }, []);
