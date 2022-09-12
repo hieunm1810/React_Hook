@@ -8,6 +8,7 @@ export default function Search() {
   const [arrProduct, setArrProduct] = useState([]);
   const [searchParam, setSearchParam] = useSearchParams();
   //   const [keyword, setKeyWord] = useState(searchParam.get("keyword"));
+  console.log(searchParam);
 
   const handleChange = (e) => {
     const { id, value } = e.target;

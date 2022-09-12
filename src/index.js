@@ -18,6 +18,8 @@ import Profile from './pages/HooksRouter/ReactForm/Profile';
 import Home from "./pages/Home/Home.jsx";
 import Detail from './pages/Detail/Detail';
 import Search from './pages/Search/Search';
+import DemoUseRoute from './pages/DemoUseRoute.jsx/DemoUseRoute';
+import DemoAnimation from './pages/DemoAnimation/DemoAnimation';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
@@ -39,6 +41,8 @@ root.render(
           <Route path="reactform" element={<ReactForm />}></Route>
           <Route path="profile" element={<Profile />}></Route>
           <Route path="search" element={<Search />}></Route>
+          <Route path="customhook" element={<DemoUseRoute />}></Route>
+          <Route path="animation" element={<DemoAnimation />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

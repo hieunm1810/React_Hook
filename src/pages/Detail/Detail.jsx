@@ -1,27 +1,37 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { getProductDetail } from "../../redux/reducers/productsReducer";
 
 export default function Detail(props) {
-  const [productDetail, setProductDetail] = useState({});
+  // const [productDetail, setProductDetail] = useState({});
+  const {productDetail} = useSelector(state => state.productsReducer);
   const params = useParams();
   const navigate = useNavigate();
-
-  const getProductDetail = async () => {
-    try {
-      const api = await axios({
-        url: `https://shop.cyberlearn.vn/api/Product/getbyid?id=${params.id}`,
-        method: "GET",
-      });
-      console.log(api.data.content);
-      setProductDetail(api.data.content);
-    } catch (error) {
-      console.log(error);
-    }
+  const dispatch = useDispatch();
+  const getProductDetailApi = async () => {
+    // try {
+    //   const api = await axios({
+    //     url: `https://shop.cyberlearn.vn/api/Product/getbyid?id=${params.id}`,
+    //     method: "GET",
+    //   });
+    //   console.log(api.data.content);
+    //   // setProductDetail(api.data.content);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    const actionThunk = getProductDetail(params.id);
+    // hàm trên sẽ trả về hàm bên dưới
+    // async dispatch => {
+    //   //xử lý logic ở đây
+      
+    // }
+    dispatch(actionThunk);
   };
   useEffect(() => {
-    getProductDetail();
+    getProductDetailApi();
     //muon trang do link lai chinh no thi phai dung params de nhan biet su thay doi
   }, [params.id]);
   return (
